@@ -10,19 +10,26 @@ function App() {
     { id: 3, title: "Internet", amount: 30, date: "2025-05-03", category: "Utilities" },
   ]);
 
-
+  // Funksjon for å legge til ny utgift
   const addExpense = (newExpense) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+  };
+
+  // Funksjon for å slette en utgift
+  const deleteExpense = (id) => {
+    const updatedExpenses = expenses.filter((expense) => expense.id !== id);
+    setExpenses(updatedExpenses);
+    console.log("Deleted expense with ID:", id);
   };
 
   return (
     <div>
       <h1>Expense Tracker</h1>
-      
+    
       <ExpenseForm addExpense={addExpense} />
       
-    
-      <ExpenseList expenses={expenses} />
+     
+      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
     </div>
   );
 }
