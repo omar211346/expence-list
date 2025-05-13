@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ExpenseList from "./components/ExpenseList";
-import ExpenseForm from "./components/ExpenseForm";
+import ExpenseForm from "./components/ExpenceForm";
 
 function App() {
 
@@ -12,7 +12,6 @@ function App() {
 
 
   const addExpense = (newExpense) => {
-    console.log("Adding new expense:", newExpense);
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
 

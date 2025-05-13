@@ -17,7 +17,6 @@ const ExpenseForm = ({ addExpense }) => {
       category: category,
     };
 
-    console.log("New Expense:", newExpense);
     addExpense(newExpense);
 
     // Reset fields
