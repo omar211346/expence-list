@@ -1,25 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ExpenseForm = ({ addExpense }) => {
+  
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    
     const newExpense = {
       id: Date.now(),
-      title: e.target.title, 
-      amount: e.target.amount, 
-      date: e.target.date,   
-      category: e.target.category, 
+      title: title,
+      amount: amount,
+      date: date,
+      category: category,
     };
-    console.log("New Expense:", newExpense);
+
+    console.log("New Expense (corrected):", newExpense);
     addExpense(newExpense);
+
+    
+    setTitle("");
+    setAmount("");
+    setDate("");
+    setCategory("");
   };
 
+ 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Title" name="title" />
-      <input type="number" placeholder="Amount" name="amount" />
-      <input type="date" name="date" />
-      <select name="category">
+      <input 
+        type="text" 
+        placeholder="Title" 
+        name="title" 
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input 
+        type="number" 
+        placeholder="Amount" 
+        name="amount" 
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <input 
+        type="date" 
+        name="date" 
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      />
+      <select 
+        name="category" 
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
         <option value="">Select Category</option>
         <option value="housing">Housing</option>
         <option value="utilities">Utilities</option>
