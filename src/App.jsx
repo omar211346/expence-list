@@ -21,11 +21,28 @@ function App() {
     setExpenses(updatedExpenses);
     console.log("Deleted expense with ID:", id);
   };
+  const editExpense = (id) => {
+    console.log("Editing expense with ID:", id);
+  
+    
+    const expenseToEdit = expenses.map((expense) => {
+      if (expense.id === id) {
+        return expense; 
+      }
+    });
+  
+    console.log("Expense to edit:", expenseToEdit);
+  
+    
+    expenseToEdit.title = "Edited Title"; 
+
+    setExpenses(expenseToEdit);
+  };
 
   return (
     <div>
       <h1>Expense Tracker</h1>
-      
+       
      
       <ExpenseForm addExpense={addExpense} />
       <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
