@@ -23,7 +23,7 @@ function App() {
   
   const editExpense = (id) => {
     console.log("Editing expense with ID:", id);
-    /
+    
   };
 
   return (
