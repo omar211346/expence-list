@@ -13,6 +13,7 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
             key={expense.id} 
             expense={expense} 
             deleteExpense={deleteExpense} 
+            editExpense={editExpense}
           />
         ))
       )}
