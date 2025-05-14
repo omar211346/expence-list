@@ -1,6 +1,11 @@
 import React from "react";
 
-const ExpenseItem = ({ expense, deleteExpense }) => {
+const ExpenseItem = ({ expense, deleteExpense, editExpense }) => {
+
+  const handleEdit = () => {
+    console.log("Editing expense with ID:", expense.id);
+    editExpense(expense.id);
+  };
 
   const handleDelete = () => {
     console.log("Deleting expense with ID:", expense.id);
@@ -14,7 +19,6 @@ const ExpenseItem = ({ expense, deleteExpense }) => {
       <p>Date: {expense.date}</p>
       <p>Category: {expense.category}</p>
 
-      
       <button onClick={handleEdit}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
     </div>
