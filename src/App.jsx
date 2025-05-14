@@ -10,42 +10,31 @@ function App() {
     { id: 3, title: "Internet", amount: 30, date: "2025-05-03", category: "Utilities" },
   ]);
 
-
   const addExpense = (newExpense) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
-
 
   const deleteExpense = (id) => {
     const updatedExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(updatedExpenses);
     console.log("Deleted expense with ID:", id);
   };
+
+  
   const editExpense = (id) => {
     console.log("Editing expense with ID:", id);
-  
-    
-    const expenseToEdit = expenses.map((expense) => {
-      if (expense.id === id) {
-        return expense; 
-      }
-    });
-  
-    console.log("Expense to edit:", expenseToEdit);
-  
-    
-    expenseToEdit.title = "Edited Title"; 
-
-    setExpenses(expenseToEdit);
+    /
   };
 
   return (
     <div>
       <h1>Expense Tracker</h1>
-       
-     
       <ExpenseForm addExpense={addExpense} />
-      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
+      <ExpenseList 
+        expenses={expenses} 
+        deleteExpense={deleteExpense} 
+        editExpense={editExpense} 
+      />
     </div>
   );
 }
