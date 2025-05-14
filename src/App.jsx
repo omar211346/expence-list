@@ -10,20 +10,31 @@ function App() {
     { id: 3, title: "Internet", amount: 30, date: "2025-05-03", category: "Utilities" },
   ]);
 
+ 
   const addExpense = (newExpense) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
 
+ 
   const deleteExpense = (id) => {
     const updatedExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(updatedExpenses);
     console.log("Deleted expense with ID:", id);
   };
 
-  
   const editExpense = (id) => {
     console.log("Editing expense with ID:", id);
-    
+
+    const expenseToEdit = expenses.find((expense) => expense.id === id);
+
+    if (expenseToEdit) {
+      const updatedExpenses = expenses.map((expense) =>
+        expense.id === id ? updatedExpense : expense
+      );
+
+      setExpenses(updatedExpenses);
+      console.log("Updated expenses:", updatedExpenses);
+    }
   };
 
   return (
