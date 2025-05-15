@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
-    const EditForm = ({ expense }) => {
-        
-        const [title, setTitle] = useState(expense.title);
-        const [amount, setAmount] = useState(""); 
-        const [date, setDate] = useState(expense.date);
-        const [category, setCategory] = useState(expense.category);
-      
-       
-        const handleTitleChange = (e) => {
-          setTitle(e.target); // 
-        };
-      
-        
-        const handleAmountChange = (e) => {
-          setAmount(e.target.value);
-        };
-      
-        const handleCategoryChange = (e) => {
-          setCategory(e.target.value);
-        };
-      
+const EditForm = ({ expense }) => {
+  const [title, setTitle] = useState(expense.title);
+  const [amount, setAmount] = useState(expense.amount); 
+  const [date, setDate] = useState(expense.date);
+  const [category, setCategory] = useState(expense.category);
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value); 
+  };
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   return (
     <form>
-      <input type="text" placeholder="Title" value={expense.title} />
-      <input type="number" placeholder="Amount" value={expense.amount} />
-      <input type="date" value={expense.date} />
-      <select value={expense.category}>
+      <input 
+        type="text" 
+        placeholder="Title" 
+        value={title} 
+        onChange={handleTitleChange} 
+      />
+
+      <input 
+        type="number" 
+        placeholder="Amount" 
+        value={amount} 
+        onChange={handleAmountChange} 
+      />
+
+      <input 
+        type="date" 
+        value={date} 
+        onChange={handleDateChange}
+      />
+
+      <select value={category} onChange={handleCategoryChange}>
         <option value="">Select Category</option>
         <option value="Food">Food</option>
         <option value="Housing">Housing</option>
