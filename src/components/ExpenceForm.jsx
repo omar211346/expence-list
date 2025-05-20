@@ -29,10 +29,15 @@ const ExpenseForm = ({ addExpense }) => {
       <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Select Category</option>
-        <option value="Food">Food</option>
-        <option value="Housing">Housing</option>
-        <option value="Utilities">Utilities</option>
+        <option value="housing">Housing</option>
+        <option value="utilities">Utilities</option>
+        <option value="grocery">Grocery</option>
+        <option value="transportation">Transportation</option>
+        <option value="clothing">Clothing</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="other">Other</option>
       </select>
+
       <button type="submit">Add Expense</button>
     </form>
   );
