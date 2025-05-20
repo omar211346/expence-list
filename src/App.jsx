@@ -36,10 +36,16 @@ function App() {
       console.log("Updated expenses:", updatedExpenses);
     }
   };
+  const totalAmount = expenses.reduce(
+    (acc, curr) => acc + Number(curr.amount), 
+    0
+  );
+  
 
   return (
     <div>
       <h1>Expense Tracker</h1>
+      <h2>Total: ${totalAmount}</h2>
       <ExpenseForm addExpense={addExpense} />
       <ExpenseList 
         expenses={expenses || []} 
