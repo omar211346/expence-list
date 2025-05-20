@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExpenseList from "./components/ExpenseList";
-import ExpenseForm from "./components/ExpenceForm";
+import ExpenseForm from "./components/ExpenceForm"; 
+
 
 function App() {
 
@@ -10,24 +11,23 @@ function App() {
     { id: 3, title: "Internet", amount: 30, date: "2025-05-03", category: "Utilities" },
   ]);
 
- 
   const addExpense = (newExpense) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
 
- 
   const deleteExpense = (id) => {
     const updatedExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(updatedExpenses);
     console.log("Deleted expense with ID:", id);
   };
 
-  const editExpense = (id) => {
+  const editExpense = (id, updatedData) => {
     console.log("Editing expense with ID:", id);
 
     const expenseToEdit = expenses.find((expense) => expense.id === id);
 
     if (expenseToEdit) {
+      const updatedExpense = { ...expenseToEdit, ...updatedData };
       const updatedExpenses = expenses.map((expense) =>
         expense.id === id ? updatedExpense : expense
       );
@@ -42,7 +42,7 @@ function App() {
       <h1>Expense Tracker</h1>
       <ExpenseForm addExpense={addExpense} />
       <ExpenseList 
-        expenses={expenses} 
+        expenses={expenses || []} 
         deleteExpense={deleteExpense} 
         editExpense={editExpense} 
       />

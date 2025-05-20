@@ -1,55 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const EditForm = ({ expense }) => {
-  const [title, setTitle] = useState(expense.title);
-  const [amount, setAmount] = useState(expense.amount); 
-  const [date, setDate] = useState(expense.date);
-  const [category, setCategory] = useState(expense.category);
+const EditForm = ({ expense = {}, saveEdit, cancelEdit }) => {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value); 
-  };
+  useEffect(() => {
+    if (expense) {
+      setTitle(expense.title || "");
+      setAmount(expense.amount || "");
+      setDate(expense.date || "");
+      setCategory(expense.category || "");
+    }
+  }, [expense]);
 
-  const handleAmountChange = (e) => {
-    setAmount(e.target.value);
-  };
-
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedData = { title, amount, date, category };
+    saveEdit(updatedData);
   };
 
   return (
-    <form>
-      <input 
-        type="text" 
-        placeholder="Title" 
-        value={title} 
-        onChange={handleTitleChange} 
-      />
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input 
+          type="text" 
+          placeholder="Title" 
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)} 
+        />
+      </div>
 
-      <input 
-        type="number" 
-        placeholder="Amount" 
-        value={amount} 
-        onChange={handleAmountChange} 
-      />
+      <div>
+        <input 
+          type="number" 
+          placeholder="Amount" 
+          value={amount} 
+          onChange={(e) => setAmount(e.target.value)} 
+        />
+      </div>
 
-      <input 
-        type="date" 
-        value={date} 
-        onChange={handleDateChange}
-      />
+      <div>
+        <input 
+          type="date" 
+          value={date} 
+          onChange={(e) => setDate(e.target.value)}
+        />
+      </div>
 
-      <select value={category} onChange={handleCategoryChange}>
-        <option value="">Select Category</option>
-        <option value="Food">Food</option>
-        <option value="Housing">Housing</option>
-        <option value="Utilities">Utilities</option>
-      </select>
+      <div>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Select Category</option>
+          <option value="Food">Food</option>
+          <option value="Housing">Housing</option>
+          <option value="Utilities">Utilities</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit">Save</button>
+        <button type="button" onClick={cancelEdit}>Cancel</button>
+      </div>
     </form>
   );
 };
