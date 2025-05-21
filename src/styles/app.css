@@ -1,77 +1,123 @@
+/* Import variable- og reset-filer */
+@import url("./variables.css");
+@import url("./reset.css");
 
+/* Grunnstil for body */
 body {
-    font-family: sans-serif;
-    background-color: #f8f8f8;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    background-color: white;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input,
-  select,
-  button {
-    padding: 8px;
-    font-size: 1rem;
-  }
-  
-  button {
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #005fa3;
-  }
-  
-  .expense-item {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 10px;
-    margin: 10px auto;
-    max-width: 500px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
-  }
-  
-  .expense-item h3 {
-    margin: 0;
-  }
-  
-  .filter-section {
-    max-width: 500px;
-    margin: 0 auto 20px auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-  }
-  
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+/* Wrapper for hele appen */
+div {
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Tittel */
+h1 {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Form-stil */
+form {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-primary);
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Filter-seksjon */
+.filter-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-container input[type="month"] {
+  padding: 8px;
+}
+
+.filter-container button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Totalsum og antall i én linje */
+.summary {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0 5px;
+}
+
+/* Utgiftsposter */
+.expense-item {
+  background-color: #fff;
+  border-left: 4px solid var(--color-accent);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.expense-item h3 {
+  margin: 0;
+}
+
+.expense-item button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border: none;
+  background-color: #ccc;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.expense-item button:hover {
+  background-color: #999;
+}

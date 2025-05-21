@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenceForm";
-import "../src/styles/app.css";
+import "./styles/app.css";
 
 function App() {
   const [expenses, setExpenses] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
+
   useEffect(() => {
     const storedExpenses = localStorage.getItem("expenses");
     if (storedExpenses) {
       setExpenses(JSON.parse(storedExpenses));
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
@@ -23,12 +25,9 @@ function App() {
   const deleteExpense = (id) => {
     const updatedExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(updatedExpenses);
-    console.log("Deleted expense with ID:", id);
   };
 
   const editExpense = (id, updatedData) => {
-    console.log("Editing expense with ID:", id);
-
     const expenseToEdit = expenses.find((expense) => expense.id === id);
 
     if (expenseToEdit) {
@@ -36,24 +35,26 @@ function App() {
       const updatedExpenses = expenses.map((expense) =>
         expense.id === id ? updatedExpense : expense
       );
-
       setExpenses(updatedExpenses);
-      console.log("Updated expenses:", updatedExpenses);
     }
   };
+
   const totalAmount = expenses.reduce(
     (acc, curr) => acc + Number(curr.amount),
     0
   );
+
   const filteredExpenses = selectedMonth
     ? expenses.filter((e) => e.date.startsWith(selectedMonth))
     : expenses;
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
+    <div className="app-wrapper">
+      <h1 className="main-title">Expense Tracker</h1>
+
       <ExpenseForm addExpense={addExpense} />
-      <div style={{ marginBottom: "10px" }}>
+
+      <div className="filter-container">
         <label htmlFor="month">Filter by month:</label>
         <input
           type="month"
@@ -63,8 +64,12 @@ function App() {
         />
         <button onClick={() => setSelectedMonth("")}>Clear Filter</button>
       </div>
-      <h2>Total: ${totalAmount}</h2>
-      
+
+      <div className="summary">
+        <p>Total: ${totalAmount}</p>
+        <p>Number of expenses: {filteredExpenses.length}</p>
+      </div>
+
       <ExpenseList
         expenses={filteredExpenses}
         deleteExpense={deleteExpense}

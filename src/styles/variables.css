@@ -1,0 +1,38 @@
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/Lato-Bold.ttf") format("truetype");
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: "Lato";
+    src: url("../fonts/Lato-Black.ttf") format("truetype");
+    font-weight: 900;
+  }
+  
+  @font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Black.ttf") format("truetype");
+    font-weight: 900;
+  }
+  
+  :root {
+    --primary-color: #0077cc;
+    --primary-color-hover: #005fa3;
+    --background: #f8f8f8;
+    --text-color: #333;
+  
+    --font-main: "Lato", sans-serif;
+    --font-heading: "Roboto", sans-serif;
+  
+    --border-radius: 6px;
+    --box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
