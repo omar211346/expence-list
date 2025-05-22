@@ -24,48 +24,45 @@ const EditForm = ({ expense = {}, saveEdit, cancelEdit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <input 
-          type="text" 
-          placeholder="Title" 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
       <div>
-        <input 
-          type="number" 
-          placeholder="Amount" 
-          value={amount} 
-          onChange={(e) => setAmount(e.target.value)} 
+        <input
+          type="number"
+          placeholder="Amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
         />
       </div>
 
       <div>
-        <input 
-          type="date" 
-          value={date} 
+        <input
+          type="date"
+          value={date}
           onChange={(e) => setDate(e.target.value)}
         />
       </div>
 
       <div>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value="">Select Category</option>
-        <option value="housing">Housing</option>
-        <option value="utilities">Utilities</option>
-        <option value="grocery">Grocery</option>
-        <option value="transportation">Transportation</option>
-        <option value="clothing">Clothing</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="other">Other</option>
-        </select>
-
+          <option value="">Select Category</option>
+          <option value="housing">Housing</option>
+          <option value="utilities">Utilities</option>
+          <option value="grocery">Grocery</option>
+          <option value="transportation">Transportation</option>
+          <option value="clothing">Clothing</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="other">Other</option>
         </select>
       </div>
 
-      <div>
+      <div className="buttons">
         <button type="submit">Save</button>
         <button type="button" onClick={cancelEdit}>Cancel</button>
       </div>

@@ -22,7 +22,7 @@ const ExpenseItem = ({ expense, deleteExpense, editExpense }) => {
   };
 
   return (
-    <div style={{ border: "1px solid #ccc", padding: "10px", margin: "5px 0" }}>
+    <div className="expense-item">
       {isEditing ? (
         <EditForm 
           expense={expense} 
@@ -30,14 +30,16 @@ const ExpenseItem = ({ expense, deleteExpense, editExpense }) => {
           cancelEdit={handleCancel} 
         />
       ) : (
-        <div>
+        <>
           <h3>{expense.title}</h3>
           <p>Amount: ${expense.amount}</p>
           <p>Date: {expense.date}</p>
           <p>Category: {expense.category}</p>
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
+          <div className="buttons">
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+        </>
       )}
     </div>
   );
