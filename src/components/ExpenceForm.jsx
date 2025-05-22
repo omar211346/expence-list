@@ -32,28 +32,32 @@ const ExpenseForm = ({ addExpense }) => {
   };
 
   return (
-    <>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="form-wrapper">
+      {error && <p className="form-error">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="expense-form">
         <input
+          className="form-input"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
+          className="form-input"
           type="number"
           placeholder="Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
         <input
+          className="form-input"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
         <select
+          className="form-select"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
@@ -66,9 +70,9 @@ const ExpenseForm = ({ addExpense }) => {
           <option value="entertainment">Entertainment</option>
           <option value="other">Other</option>
         </select>
-        <button type="submit">Add Expense</button>
+        <button type="submit" className="form-button">Add Expense</button>
       </form>
-    </>
+    </div>
   );
 };
 
