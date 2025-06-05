@@ -23,18 +23,18 @@
   }
   
   :root {
-    /* Farger */
+
     --primary-color: green;
     --primary-color-hover: #005fa3;
     --background: #f8f8f8;
     --text-color: #333;
-    --color-accent: #3cb371; /* Light green border for expense items */
+    --color-accent: #3cb371; 
   
-    /* Typografi */
+  
     --font-main: "Lato", sans-serif;
     --font-heading: "Roboto", sans-serif;
   
-    /* UI */
+    
     --border-radius: 6px;
     --box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   }
