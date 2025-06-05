@@ -21,7 +21,7 @@ This is a simple expense tracker application built with React (Vite). The app al
 This app is deployed on netlify and tracked in github. 
 
 netlify link
-
+https://jocular-narwhal-7bb131.netlify.app/
 github link
 
 https://github.com/omar211346/expence-list.git
